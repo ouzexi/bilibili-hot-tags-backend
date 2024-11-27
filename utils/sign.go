@@ -48,7 +48,7 @@ func FetchVideos(keyword, order string) string {
 	originCookie := "buvid_fp_plain=undefined; buvid4=18A68FB2-F597-AF65-5F3B-7CF1A758861504264-023041811-ex5UQvvtG351fkucjsxdxw%3D%3D; enable_web_push=DISABLE; CURRENT_BLACKGAP=0; FEED_LIVE_VERSION=V_WATCHLATER_PIP_WINDOW3; CURRENT_QUALITY=80; buvid3=014F6001-B296-6944-8130-3933A874E7EE85205infoc; b_nut=1713335685; _uuid=B49410F89-710F4-8558-752F-65410C48B28C211180infoc; header_theme_version=CLOSE; hit-dyn-v2=1; rpdid=|(k|J|~|muRk0J'u~uYJY|l)k; fingerprint=49495033dc74747a84ddfa9d12d82580; buvid_fp=49495033dc74747a84ddfa9d12d82580; DedeUserID=312811426; DedeUserID__ckMd5=3fdfdd712bd29342; LIVE_BUVID=AUTO7917235357201806; PVID=2; CURRENT_FNVAL=4048; home_feed_column=5; bili_ticket=eyJhbGciOiJIUzI1NiIsImtpZCI6InMwMyIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MzI3NzY3MjMsImlhdCI6MTczMjUxNzQ2MywicGx0IjotMX0.FfzyEzxclBJzOolzGYx959rQ5Shdf8fbaqNdZrm-zZ8; bili_ticket_expires=1732776663; bili_jct=b475e908600a6f289dfb576a58b2d983; bp_t_offset_312811426=1003644401496358912; b_lsid=7AFB65AC_19366585862; match_float_version=ENABLE; browser_resolution=2048-983"
 	cookieVal, ok := getCookieCached()
 	if ok {
-		originCookie = cookieVal
+		originCookie = cookieVal.(string)
 	}
 
 	req.Header.Set("Cookie", originCookie)
@@ -158,10 +158,9 @@ func UpdateCookie(cookieVal string) {
 	cache.Store("cookieKey", cookieVal)
 }
 
-func getCookieCached() (string, bool) {
+func getCookieCached() (interface{}, bool) {
 	cookieVal, ok := cache.Load("cookieKey")
-	return cookieVal.(string), ok
-
+	return cookieVal, ok
 }
 
 func getWbiKeys() (string, string) {
