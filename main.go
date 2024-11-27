@@ -2,7 +2,7 @@ package main
 
 import (
 	"gin_template/hub"
-	"gin_template/module/pong"
+	"gin_template/module/api"
 	"gin_template/utils"
 	"os"
 	"os/signal"
@@ -13,7 +13,7 @@ func init() {
 }
 
 func main() {
-	hub.RegisterModule(&pong.Mod{})
+	hub.RegisterModule(&api.Mod{})
 
 	hub.Init()
 

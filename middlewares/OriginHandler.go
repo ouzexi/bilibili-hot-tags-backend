@@ -9,6 +9,13 @@ import (
 // OriginMiddleware 创建一个中间件，用于检查请求来源
 func OriginMiddleware(allowedOrigin string) gin.HandlerFunc {
 	return func(c *gin.Context) {
+		// 获取请求的接口路径
+		/* requestPath := c.Request.URL.Path
+		if requestPath == variable.IgnoreApi {
+			c.Next()
+			return
+		} */
+
 		origin := c.Request.Header.Get("Origin")
 		referer := c.Request.Header.Get("Referer")
 

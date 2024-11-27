@@ -5,7 +5,7 @@ import "strings"
 // ModuleID 模块ID
 // 请使用 小写 并用 _ 代替空格
 // Example:
-// - atom.pong
+// - atom.api
 type ModuleID string
 
 // Namespace - 获取一个 Module 的 Namespace
