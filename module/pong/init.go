@@ -67,6 +67,7 @@ func handlePingPong(c *gin.Context) {
 }
 
 func handleBilibiliTagsGet(c *gin.Context) {
+	// c.Request.Cookie()
 	keyword := c.Query("keyword")
 	order := c.DefaultQuery("order", "totalrank")
 
