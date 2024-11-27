@@ -1,6 +1,7 @@
 package hub
 
 import (
+	"gin_template/middlewares"
 	"sync"
 
 	"github.com/gin-gonic/gin"
@@ -19,6 +20,8 @@ var logger = logrus.WithField("hub", "internal")
 func Init() {
 	httpEngine := gin.New()
 	httpEngine.Use(ginRequestLog(), gin.Recovery())
+	// 最大并发连接数为 1
+	httpEngine.Use(middlewares.LimitHandler(1))
 	Instance = &Server{
 		HttpEngine: httpEngine,
 	}
