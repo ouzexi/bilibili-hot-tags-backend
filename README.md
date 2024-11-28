@@ -216,3 +216,4 @@ go build main.go
 ### 特别鸣谢
 
 - [bilibili-API-collect](https://github.com/SocialSisterYi/bilibili-API-collect)
+- [web-tpl](https://github.com/nilpanic/web-tpl)
