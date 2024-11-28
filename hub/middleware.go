@@ -1,14 +1,15 @@
 package hub
 
 import (
+	"time"
+
 	"github.com/gin-gonic/gin"
 	"github.com/sirupsen/logrus"
-	"time"
 )
 
 var ginLogger = logrus.WithField("hub", "gin")
 
-func ginRequestLog() gin.HandlerFunc {
+func RequestLogMiddleware() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		startTime := time.Now()
 		c.Next()

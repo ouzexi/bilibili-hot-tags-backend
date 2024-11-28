@@ -48,17 +48,14 @@ func (m *Mod) Serve(server *hub.Server) {
 }
 
 func (m *Mod) Start(server *hub.Server) {
-	// 此函数会新开携程进行调用
-	// ```go
-	// 		go exampleModule.Start()
-	// ```
-
+	// 此函数会新开协程进行调用
+	// go exampleModule.Start()
 	// 可以利用此部分进行后台操作
 	// 如http服务器等等
 }
 
 func (m *Mod) Stop(server *hub.Server, wg *sync.WaitGroup) {
-	// 别忘了解锁
+	// 解锁
 	defer wg.Done()
 	// 结束部分
 	// 一般调用此函数时，程序接收到 os.Interrupt 信号

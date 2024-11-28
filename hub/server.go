@@ -20,7 +20,7 @@ var logger = logrus.WithField("hub", "internal")
 // Init 快速初始化
 func Init() {
 	httpEngine := gin.New()
-	httpEngine.Use(ginRequestLog(), gin.Recovery())
+	httpEngine.Use(RequestLogMiddleware(), gin.Recovery())
 	// 访问来源限制
 	httpEngine.Use((middlewares.OriginMiddleware(variable.Origin)))
 	// 最大并发连接数为 1
